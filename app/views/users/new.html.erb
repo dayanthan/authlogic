@@ -1,0 +1,101 @@
+ <html>
+  <head>
+    <%= javascript_include_tag "jquery-validation/jquery.js"%>
+    <%= javascript_include_tag "jquery-validation/jquery.validationEngine.js" %>
+    <%= javascript_include_tag "jquery-validation/jquery.validationEngine-en.js" %>
+    <%= stylesheet_link_tag "jquery-validation/validationEngine.jquery.css" %>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Lets Meet</title>
+    
+
+    <script type="text/javascript">
+        jQuery.noConflict();
+        jQuery(document).ready(function(){
+        jQuery("#frmuser").validationEngine();
+      });
+    </script>
+  </head>
+<body>
+
+<!--wepp-->
+<div id="wepp">
+<!--header start-->
+          
+
+
+
+
+<div style="padding:0px 0px 10px 0px ;font-size:15px; text-align:center;">
+
+   <% if flash[:notice] %>
+    <p class="flash-notice"><%= flash[:notice] %></p>
+  <% end %>
+  <% if flash[:alert] %>
+    <p class="flash-error;font-size:55px;"><%= flash[:alert] %></p>
+  <% end %>
+</div>
+
+<p style="font-size:20px; text-align:center;"><b>Register</b></p>
+
+<div style="margin:auto; width:400px;font-size:14px; border:2px solid #000;">
+<%#= form_for @user, :url=> {:action =>"create"} do |f| %>
+
+ <%= form_for @user,:name=>"user",:url=> {:action =>"create"},:html =>{:id =>'frmuser', :multipart => true} do |f| %>
+ 				
+  <p style="text-align:center;" >
+    <%= f.label :first_name, "FirstName" %><br />
+    <%= f.text_field :first_name,:class =>"validate[required]"%>
+  </p>
+  
+  <p style="text-align:center;" >
+     <%= f.label :last_name, "LastName" %><br />
+     <%= f.text_field :last_name,:class =>"validate[required]" %>
+  </p>
+  
+   <p style="text-align:center;">
+      <%= f.label :username %><br/>
+      <%= f.text_field :username,:class=>"validate[required]",:onchange =>"checkusernamedata(this.value);"%>
+   </p>
+   
+   <p style="text-align:center;">
+    <%= f.label :email %><br />					      
+    <%= f.text_field :email,:class=>"validate[required]",:onchange =>"checkemaildata(this.value);"%>
+    
+   </p>
+   
+   <p style="text-align:center;">
+     <%= f.label :password %><br />
+     <%= f.password_field :password,:class =>"validate[required]",:onchange=>"checkpasswordlength(this.value);" %>
+   </p>
+  
+   <p style="text-align:center;">
+     <%= f.label :password_confirmation %><br />
+     <%= f.password_field :password_confirmation,:class =>"validate[required,equals[user_password]]" %>
+   </p>
+
+   <p style="text-align:center;">
+      <label for="gender">gender:&nbsp;&nbsp;&nbsp;</label>
+        <%#= f.select :gender,options_for_select([['Male','Male'],['Female','Female']]) %>
+       <input type="radio" name=user[gender] value="Male">male
+       <input type="radio" name=user[gender] value="Female">Female</p>
+    <p>
+   
+   
+
+
+    <p style="text-align:center;">
+       <%= f.submit "Submit"%>
+       <input type="reset" value="Reset" />
+    </p>
+ 
+<% end %>
+	
+<p style="text-align:center;">Already you have an account?</br>
+<%= link_to 'Click here', login_path %> to login!</p>
+<%#= f.text_field :email,:class=>"validate[custom[email],ajaxUser]"%>
+</div>
+
+</body>
+</html>
+

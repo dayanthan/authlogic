@@ -1,0 +1,101 @@
+<html>
+  <head>
+    <%= javascript_include_tag "jquery-validation/jquery.js"%>
+    <%= javascript_include_tag "jquery-validation/jquery.validationEngine.js" %>
+    <%= javascript_include_tag "jquery-validation/jquery.validationEngine-en.js" %>
+    <%= stylesheet_link_tag "jquery-validation/validationEngine.jquery.css" %>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Lets Meet</title>
+    
+
+    <script type="text/javascript">
+        jQuery.noConflict();
+        jQuery(document).ready(function(){
+        jQuery("#changepwd").validationEngine();
+      });
+    </script>
+  </head>
+<body>
+
+
+
+
+
+<div style="padding:0px 0px 10px 0px ;font-size:15px; text-align:center;">
+
+<div style="margin:auto; width:400px;font-size:14px; border:2px solid #000;padding:20px 0px 10px 0px;">
+
+<p style="padding:0px 0px 10px 0px ;font-size:20px; text-align:center;"><b>Reset Password</b></p1>
+
+  <%= form_for @user,:name=>"user",:url=> {:action =>"reset_pass"},:html =>{:id =>'changepwd', :multipart => true} do |f| %>
+
+
+                	<div class="row">
+                    	
+                        <div class="admin_input_left"></div>
+                        <div class="admin_input_repeat">
+				<% if params[:from] == "edit" %>
+                        		<div class="label">Old password<b>*</b> </div>
+				 <div class="adminsep"></div>
+                             <%= password_field_tag 'old_password',"", :class => 'validate[required],length[6,20]' %>
+                             <%= hidden_field_tag 'id', @user_id %>
+                      		  </div>
+				<% else %>
+					<div class="label">New password<b>*</b> </div>
+					 <div class="adminsep"></div>
+                             <%= password_field_tag 'password',"", :class => 'validate[required],length[6,20]]' %>
+                             <%= hidden_field_tag 'id', @user_id %>
+                        </div>
+				<% end %>
+
+                           
+                        <div class="admin_input_right"></div>
+                    </div>
+                    <div class="row">
+                    	
+                        <div class="admin_input_left"></div>
+                        <div class="admin_input_repeat">
+				<% if params[:from] == "edit" %>
+                        	   <div class="label">New password<b>*</b></div>
+ 				<div class="adminsep"></div>
+                                  <%= password_field_tag 'password', "", :class => "validate[required],length[6,20]" %>
+                              </div>
+				<% else %>
+					 <div class="label">Password confirmation<b>*</b></div>
+				<div class="adminsep"></div>
+                            <%= password_field_tag 'password_confirmation', "", :class => 'validate[required,equals[password]]' %>
+                        </div>
+				<% end %>
+                            
+                        <div class="admin_input_right"></div>
+                    </div>
+		<% if params[:from] == "edit" %>
+		   <div class="row">
+                    	
+                        <div class="admin_input_left"></div>
+                        <div class="admin_input_repeat">
+				
+                        	   <div class="label">Password Confirmation<b>*</b></div>
+				
+                            <div class="adminsep"></div>
+                            <%= password_field_tag 'password_confirmation', "", :class => 'validate[required]' %>
+                        </div>
+                        <div class="admin_input_right"></div>
+                    </div>
+                   <% end %>
+                    <div class="linestrip"></div>
+                    
+                         
+		  <div style="padding:20px 0px 10px 0px">
+	     	 <%= f.submit "Change",:class => "submit"%>
+	  	 <input type="reset" value="Reset" />
+	  	 <%#= f.submit "Reset",:class => "reset"%>
+        	  </div>
+			
+                   
+
+                <% end %>
+</div>
+</body>
+</html>

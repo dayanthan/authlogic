@@ -1,0 +1,81 @@
+<html>
+  <head>
+    <%= javascript_include_tag "jquery-validation/jquery.js"%>
+    <%= javascript_include_tag "jquery-validation/jquery.validationEngine.js" %>
+    <%= javascript_include_tag "jquery-validation/jquery.validationEngine-en.js" %>
+    <%= stylesheet_link_tag "jquery-validation/validationEngine.jquery.css" %>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Lets Meet</title>
+    
+
+    <script type="text/javascript">
+        jQuery.noConflict();
+        jQuery(document).ready(function(){
+        jQuery("#user").validationEngine();
+      });
+    </script>
+  </head>
+<body>
+
+	
+ <div style="padding:0px 0px 10px 0px ;font-size:15px; text-align:center;">
+  <% if flash[:alert] %>
+    <p class="flash-error;font-size:55px;"><%= flash[:alert] %></p>
+  <% end %>
+  <% if flash[:notice] %>
+    <p class="flash-notice"><%= flash[:notice] %></p>
+  <% end %>
+
+</div>
+
+<p style="padding:0px 0px 0px 0px ; font-size:20px; text-align:center;"><b>Login</b></p>
+
+
+	<div style="margin:auto; width:400px; height:210px; font-size:14px; border:2px solid #000;padding:20px 0px 10px 0px;">
+
+
+	<%= form_for @user_session, :url => {:action => "create"},:html =>{:id =>'user', :muitipart => true} do |f| %>
+	
+
+	<div  style="text-align:center;" >
+
+
+	     <div >
+
+     		<%= f.label :email %><br />
+      		<%= f.text_field :email,:class=>"logininputrepeat validate[custom[email],ajaxUser] ",:onfocus=>"focuscheckValidation(this,'Email Address',event)",:onblur=>"focuscheckValidation(this,'Email Address',event)" %>
+		
+  	     </div>
+	 
+	     <div>
+    		<%= f.label :Password %><br />
+   		<%= f.password_field :password,:class =>"validate[required]" %>
+ 	     </div>	
+ 	 	 
+          <div style="padding:20px 0px 10px 0px">
+	   <%= f.submit "Login",:class => "submit"%>
+	   <input type="reset" value="Reset" />
+	   <%#= f.submit "Reset",:class => "reset"%>
+          </div>
+       
+	<% end %>
+
+<p style="text-align:center">You Need New account?
+<%= link_to 'Click here', signup_path %></p>
+
+	<div>
+
+		<a style="cursor:pointer" href="#" onclick="getPopup('forgotpassword','','');">Forgot Password </a>
+	</div>
+
+     
+    </div>
+	
+
+
+
+</body>
+</html>
+   
+

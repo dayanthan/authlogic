@@ -1,0 +1,176 @@
+/* designed and coded by ubik - yewbic[at]yahoo[dot]com */
+
+body {
+background:#000 url(../images/bg.jpg) no-repeat 50% 50px;
+margin:0;
+padding:0;
+text-align:center;
+}
+
+#container {
+background:#000;
+width:760px;
+margin:0 auto;
+text-align:left;
+}
+
+#header {
+background:url(/images/header.jpg) no-repeat center top;
+width:760px;
+height:234px;
+position:relative;
+margin:0;
+}
+
+#menu {
+width:210px;
+float:left;
+margin:50px 0 0 0;
+}
+
+.leftbox {
+width:185px;
+background:#000;
+border-width:7px 1px 7px 7px;
+border-color:#555 #555 #555 #000;
+border-style:solid;
+margin:60px 0 0 0;
+padding:10px 10px 10px 0;
+text-align:justify;
+font:14px verdana,arial,sans-serif;
+color:#fff;
+}
+
+.leftbox ul {
+list-style-type:none;
+margin:10px 0 10px 0;
+padding:0;
+}
+
+.leftbox li, .leftbox a {
+font-weight:bold;
+color:#99cc33;
+letter-spacing:1px;
+text-align:left;
+text-decoration:none;
+}
+
+.leftbox a:hover {color:#ccff66}
+
+h4 {
+font:bold 15px verdana,arial,sans-serif;
+color:#fff;
+display:block;
+margin:0 0 15px 0;
+letter-spacing:1px;
+text-align:center;
+}
+
+a.item {
+background:url('menu.jpg') no-repeat;
+max-width:210px;
+height:34px;
+display:block;
+padding:0 0 0 10px;
+font:bold 15px verdana,arial,sans-serif;
+color:#fff;
+text-decoration:none;
+line-height:30px;
+}
+
+/*
+good practice of background offset rollovers to avoid javascript preload. 
+Im using max-width, BG pos. and Padding instead of margin and smaller-than 
+container width, to get pop-out effect cause of a left-edge bug that makes 
+the menu jump. -ubik
+*/
+a.item:hover {
+background-position:10px -34px;
+padding:0 0 0 20px;
+}
+
+#main {
+background:#000;
+min-height:400px;
+margin:0 0 0 220px;
+font:15px verdana,arial,sans-serif;
+color:#fff;
+text-align:left;
+}
+
+#footer {
+clear:both;
+height:40px;
+background:#000;
+margin:50px 0 0 0;
+text-align:center;
+padding:20px 0 10px 0;
+}
+
+#footer a {
+font:bold 15px verdana,arial,sans-serif;
+color:#ccc;
+text-decoration:none;
+letter-spacing:1px;
+margin-left:20px;
+}
+
+#footer a:hover {color:#ccff66}
+
+/* "bottomRight" is the botttom right background image of the content container */
+.bottomRight {background:url('bottomRight.jpg') no-repeat right bottom}
+
+.content {
+min-height:190px;
+background:url('topleft.jpg') no-repeat left top;
+padding:30px 40px;
+margin:20px 0 30px 0;
+text-align:justify;
+}
+
+h1 {  /* position absolute - relative to the header, not document */
+position:absolute;
+left:20px;
+bottom:20px;
+margin:0;
+display:inline;
+font:60px georgia,times,serif;
+color:#fff;
+letter-spacing:5px;
+font-variant:small-caps;
+}
+
+h2 {
+font:bold italic 25px georgia,times,serif;
+color:#fff;
+display:block;
+margin:15px 0 0 0;
+}
+
+h3 {
+font:bold italic 25px georgia,times,serif;
+color:#99cc33;
+display:block;
+margin:15px 0 0 0;
+}
+
+.content a {
+text-decoration:none;
+color:#99cc33;
+font-weight:bold;
+}
+
+.content a:hover {color:#ccff66}
+
+.content ul {list-style-type:circle}
+.content li {font:bold 16px verdana,arial,sans-serif;}
+
+p {margin-top:20px}
+
+/* If you like my design, I only ask that you leave the footer note "design by ubik". thanks */
+#footer p , #footer p a {
+text-align:right;
+font:11px verdana,arial;
+color:#999;
+margin:0;
+}

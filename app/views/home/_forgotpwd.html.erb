@@ -1,0 +1,62 @@
+<script type="text/javascript">jQuery.noConflict();
+	jQuery(document).ready( function() {
+		jQuery("#form_email").validationEngine();
+	});</script>
+
+<%= stylesheet_link_tag "facybox/facybox.css","facybox/facybox_urls.css" %>
+
+<div id="facybox">
+<div class="popup">
+	<table>
+		<tbody>
+			<tr>
+				<td class="nw"></td>
+				<td class="n"></td>
+				<td class="ne"></td>
+			</tr>
+			<tr>
+				<td class="w"></td>
+				<td class="body">
+				<a class="close" onclick="document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none';" style="display: block;"></a>
+				<div class=" content" style="display: block;">
+					<div id="forgot_div" style="background-color:#EBEBEA;width:350px;">
+						<form id='form_email'>
+							<table border="0" width="100%" cellpadding="0" cellspacing="0">
+							  <tr>
+							    <td style="font-size:16px;color:#00529C;padding-bottom:5px;">Forgot Password?</td>
+							  </tr>
+							  <tr>
+							    <td style="font-size:12px;">Enter your username/email id & we will send you a new password.</td>
+							  </tr>
+							  <tr><td>&nbsp;</td></tr>
+							  <tr>
+							    <td style="font-size:12px;">
+								  <span><%=label "email","Email" %></span>
+								  <%= text_field "user","email",:id=>"for_email",:class=>" validate[custom[email],ajaxUser]" %>
+							    </td>
+							  </tr>
+							  <tr>
+							    <td style="text-align:left;padding-top:10px;padding-left:40px;">
+							      <input id="forgot_submit" type="button" name="Submit" value="Submit" class="buttonblue" onclick="forgotpassword(document.getElementById('for_email').value)" />&nbsp;
+							    <%= image_tag "/images/spinner.gif",:id=>"spinner",:style => "display:none" %>
+						            </td>
+							  </tr>
+							</table>
+						</form>
+					</div>
+				</div>
+				</td>
+				<td class="e"></td>
+			</tr>
+			<tr>
+				<td class="sw"></td>
+				<td class="s"></td>
+				<td class="se"></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+</div>
+
+
+
