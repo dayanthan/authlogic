@@ -41,10 +41,18 @@
 </div>
 
 <div id="main">
-
 <div class="bottomRight">
 <div class="content">
-
+	<div style="padding:0px 0px 10px 0px ;font-size:15px; text-align:center;">
+      	<% if !current_user.nil? %>	
+          Welcome <strong><%= current_user.username %>!</strong> Not you?
+          <%= link_to "Log out", logout_path %> 
+          <%#= link_to "View Profile", user_path(:current) %>
+        <% else %>
+          <%#= link_to "Sign up", signup_path %> 
+          <%#= link_to "log in", login_path %>
+        <% end %>
+	</div>
 
 		<%= yield %>
 		<div id="fade" class="black_overlay" style="display:none"></div>

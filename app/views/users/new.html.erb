@@ -43,16 +43,6 @@
 
  <%= form_for @user,:name=>"user",:url=> {:action =>"create"},:html =>{:id =>'frmuser', :multipart => true} do |f| %>
  				
-  <p style="text-align:center;" >
-    <%= f.label :first_name, "FirstName" %><br />
-    <%= f.text_field :first_name,:class =>"validate[required]"%>
-  </p>
-  
-  <p style="text-align:center;" >
-     <%= f.label :last_name, "LastName" %><br />
-     <%= f.text_field :last_name,:class =>"validate[required]" %>
-  </p>
-  
    <p style="text-align:center;">
       <%= f.label :username %><br/>
       <%= f.text_field :username,:class=>"validate[required]",:onchange =>"checkusernamedata(this.value);"%>

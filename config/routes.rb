@@ -1,23 +1,25 @@
 Forgot::Application.routes.draw do
-  	get "users/new"
-  	get "password_resets/new"
-	  post "users/change_password"
-  	get "user_sessions/new"
-    match 'activate(/:activation_code)' => 'users#activate', :as => :activate_account
-    match 'send_activation(/:user_id)' => 'users#send_activation', :as => :send_activation
+  get 'users/forgot_password'
+  match 'activate(/:activation_code)' => 'users#activate', :as => :activate_account
+	match 'send_activation(/:user_id)' => 'users#send_activation', :as => :send_activation
+  match 'forgot_password' => 'user_sessions#forgot_password', :as => :forgot_password, :via => :get
+  match 'forgot_password' => 'user_sessions#forgot_password_lookup_email', :as => :forgot_password, :via => :post
+	put 'reset_password/:reset_password_code' => 'users#reset_password_submit', :as => :reset_password, :via => :put
+  get 'reset_password/:reset_password_code' => 'users#reset_password', :as => :reset_password, :via => :get  
 
-  	match 'signup' => "users#new",             :as => :signup
-  	match 'login' => "user_sessions#new",      :as => :login 
-  	match 'logout' => "user_sessions#destroy", :as => :logout
-	  match '/users/forgot_password/'=> "users#forgot_password", :as => :forgot_password
-    match '/users/updatepassWithEmail'=>"users#updatepassWithEmail",:action=>'updatepassWithEmail'
-   	match '/newpass/:reset_code' =>"users#newpass", :as => :newpasss
-    match '/users/reset_pass'=>'users#reset_pass' ,:as => :reset_pass
-    match 'user/changepwd/' =>"users#changepwd", :as => :changepwd
-    match '/users/updatechangepwd/'=>'users#updatechangepwd' ,:as => :updatechangepwd
-	  match '/users/change_password/'=>'users#change_password' ,:as => :change_password
-    match '/home/checkusernamedata/'=> "home#checkusernamedata", :as => :checkusernamedata
-    match '/home/checkemaildata/'=> "home#checkemaildata", :as => :checkemaildata
+
+	match 'signup' => "users#new",             :as => :signup
+  match 'login' => "user_sessions#new",      :as => :login 
+  match 'logout' => "user_sessions#destroy", :as => :logout
+#       match '/users/forgot_password/'=> "users#forgot_password", :as => :forgot_password
+#    	match '/users/updatepassWithEmail'=>"users#updatepassWithEmail",:action=>'updatepassWithEmail'
+#   	match '/newpass/:reset_code' =>"users#newpass", :as => :newpasss
+#    	match '/users/reset_pass'=>'users#reset_pass' ,:as => :reset_pass
+#    	match 'user/changepwd/' =>"users#changepwd", :as => :changepwd
+#    	match '/users/updatechangepwd/'=>'users#updatechangepwd' ,:as => :updatechangepwd
+	match '/users/change_password/'=>'users#change_password' ,:as => :change_password
+    	match '/home/checkusernamedata/'=> "home#checkusernamedata", :as => :checkusernamedata
+    	match '/home/checkemaildata/'=> "home#checkemaildata", :as => :checkemaildata
 	#map.change_password '/change_password', :controller => 'users', :action => 'change_password'
  	#The priority is based upon order of creation:
         #first created -> highest priority.
